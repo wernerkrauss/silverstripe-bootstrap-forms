@@ -20,6 +20,7 @@ class BootstrapFormField extends DataExtension {
 		"control-group"
 	);
 
+        protected $icon = '';
 
 	/**
 	 * Adds a HTML5 placeholder attribute to the form field
@@ -123,5 +124,21 @@ class BootstrapFormField extends DataExtension {
 			$this->addHelpText($this->owner->message);
 		}
 	}
+        
+	/**
+	 * Adds an icon to the input field.
+	 * 
+         * @see http://twitter.github.io/bootstrap/base-css.html#icons
+	 *
+	 * @param string $icon The icon class
+	 * @return BootstrapFormField
+	 */
+        public function setIcon($icon) {
+		$this->icon = $icon;
+		return $this->owner;
+        }
 	
+        public function getIcon() {
+            return $this->icon;
+        }
 }
