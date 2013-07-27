@@ -146,7 +146,15 @@ class BootstrapForm extends Form {
 		return parent::forTemplate();
 	}
 
-
+        /**
+         * uses a template for rendering the form in a modal box
+         * @return \BootstrapForm
+         */
+        
+        public function setModal() {
+            $this->template = 'BootstrapForm_Modal';
+            return $this;
+        }
 
 
 }
