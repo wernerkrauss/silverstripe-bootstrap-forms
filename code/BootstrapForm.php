@@ -28,7 +28,25 @@ class BootstrapForm extends Form {
 	 */
 	protected $formLayout = "vertical";
 
+	/**
+	 * @var bool Switch for marking required fields with class .required and attribute required="required"
+	 */
+	private static $markRequiredFields = true;
 
+
+	public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null) {
+		if (self::$markRequiredFields && is_a($validator,'RequiredFields')) {
+			foreach($fields as $field) {
+				if ($validator->fieldIsRequired($field->getName())) {
+					$field->addExtraClass('required');
+					$field->addHolderClass('required');
+					$field->setAttribute('required','required');
+				}
+			}
+		}
+
+		parent::__construct($controller, $name, $fields,  $actions, $validator);
+	}
 
 
 	/**
